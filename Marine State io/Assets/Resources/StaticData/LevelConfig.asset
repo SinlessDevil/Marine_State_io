@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b001c46b5dec3418ee9fd1c06ff39b, type: 3}
+  m_Name: LevelConfig
+  m_EditorClassIdentifier: 
+  islandSprites:
+  - {fileID: 21300000, guid: 81bff47055d436f42bd7bb908e2dbdab, type: 3}
+  - {fileID: 21300000, guid: 8835736f8fff14e4496b7aa284ef0b26, type: 3}
+  - {fileID: 21300000, guid: 1d96a9384b983f241a1c51931d56142e, type: 3}
+  - {fileID: 21300000, guid: f4a036fcbce48d346a928f5ce11fe01a, type: 3}
+  - {fileID: 21300000, guid: 0520dfb7564a3b44491f271eaaa7603f, type: 3}
+  - {fileID: 21300000, guid: 9981bd5e375bd1b46902f291f6717805, type: 3}
+  - {fileID: 21300000, guid: ee2c1bcaed747d74b82234eb9d06876c, type: 3}
+  - {fileID: 21300000, guid: caae2e60a1d85aa4ab17c0e179940e7e, type: 3}
+  - {fileID: 21300000, guid: fc14419b26ea6e741b4cf99b62ee873b, type: 3}
+  - {fileID: 21300000, guid: 7c6b0b36287923246a12d67d991a7dbb, type: 3}
+  - {fileID: 21300000, guid: 218720eb8ce3aa648ba6580972142a70, type: 3}
+  - {fileID: 21300000, guid: 974393d97aae7ea459cc003f553c6f59, type: 3}
+  - {fileID: 21300000, guid: 59799b05b49ac8b4e91f71331fe24157, type: 3}
+  - {fileID: 21300000, guid: 8fe0d59c891a3654b85528486cb9cde0, type: 3}
+  - {fileID: 21300000, guid: ab27cdfcaa3d84749850696996b733a6, type: 3}
+  iconPlayerSprites:
+  - {fileID: 21300000, guid: 08c72b0497eb31e48a8ffb9e12b0b1a1, type: 3}
+  - {fileID: 21300000, guid: b2eee9eb3547e64409bacf178515e3d9, type: 3}
+  - {fileID: 21300000, guid: 51c180d627194d24fb52b532a8631859, type: 3}
+  - {fileID: 21300000, guid: 47c090d7f5ce78146958666654da1b10, type: 3}
+  - {fileID: 21300000, guid: f1e060f6e62a6fd448869e6e0effea98, type: 3}
+  - {fileID: 21300000, guid: 9d9c9e2b68ae2174a9cb0a32969d1104, type: 3}
+  - {fileID: 21300000, guid: a7b44367383fcb945acea1c3ffd83fff, type: 3}
+  - {fileID: 21300000, guid: b794472aa18a5c44caee713729726571, type: 3}
+  - {fileID: 21300000, guid: a31ddb2203e56654db24dd41af2093b9, type: 3}
+  PlayerColors:
+  - {r: 0, g: 0.42497626, b: 0.7372549, a: 1}
+  - {r: 0, g: 0.050272077, b: 0.7372549, a: 1}
+  - {r: 0.39143464, g: 0, b: 0.7372549, a: 1}
+  - {r: 0.7372549, g: 0, b: 0.65405345, a: 1}
+  - {r: 0.7372549, g: 0, b: 0.21803938, a: 1}
+  - {r: 0.7372549, g: 0.32013452, b: 0, a: 1}
+  - {r: 0.7372549, g: 0.7172959, b: 0, a: 1}
+  - {r: 0.21164766, g: 0.7372549, b: 0, a: 1}
+  - {r: 0, g: 0.7372549, b: 0.5144459, a: 1}
+  countsUnitByDefault: 050000000a0000000f000000190000003200000064000000
+  IslandByDefaultColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
+  mainIconPlayerSprite: {fileID: 21300000, guid: 0791235fdb1f94444b3197c6b3262480, type: 3}
+  mainPlayerColor: {r: 0, g: 0.7372549, b: 0.7372549, a: 1}

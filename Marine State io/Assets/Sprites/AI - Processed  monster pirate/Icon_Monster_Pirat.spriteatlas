@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Icon_Monster_Pirat
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 0791235fdb1f94444b3197c6b3262480, type: 3}
+    - {fileID: 2800000, guid: 08c72b0497eb31e48a8ffb9e12b0b1a1, type: 3}
+    - {fileID: 2800000, guid: b2eee9eb3547e64409bacf178515e3d9, type: 3}
+    - {fileID: 2800000, guid: 51c180d627194d24fb52b532a8631859, type: 3}
+    - {fileID: 2800000, guid: 47c090d7f5ce78146958666654da1b10, type: 3}
+    - {fileID: 2800000, guid: f1e060f6e62a6fd448869e6e0effea98, type: 3}
+    - {fileID: 2800000, guid: 9d9c9e2b68ae2174a9cb0a32969d1104, type: 3}
+    - {fileID: 2800000, guid: a7b44367383fcb945acea1c3ffd83fff, type: 3}
+    - {fileID: 2800000, guid: b794472aa18a5c44caee713729726571, type: 3}
+    - {fileID: 2800000, guid: a31ddb2203e56654db24dd41af2093b9, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: a31ddb2203e56654db24dd41af2093b9, type: 3}
+  - {fileID: 21300000, guid: 08c72b0497eb31e48a8ffb9e12b0b1a1, type: 3}
+  - {fileID: 21300000, guid: 51c180d627194d24fb52b532a8631859, type: 3}
+  - {fileID: 21300000, guid: f1e060f6e62a6fd448869e6e0effea98, type: 3}
+  - {fileID: 21300000, guid: a7b44367383fcb945acea1c3ffd83fff, type: 3}
+  - {fileID: 21300000, guid: 47c090d7f5ce78146958666654da1b10, type: 3}
+  - {fileID: 21300000, guid: b794472aa18a5c44caee713729726571, type: 3}
+  - {fileID: 21300000, guid: 9d9c9e2b68ae2174a9cb0a32969d1104, type: 3}
+  - {fileID: 21300000, guid: b2eee9eb3547e64409bacf178515e3d9, type: 3}
+  - {fileID: 21300000, guid: 0791235fdb1f94444b3197c6b3262480, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Icon_Monster_Pirat_v10
+  - Icon_Monster_Pirat_v2
+  - Icon_Monster_Pirat_v4
+  - Icon_Monster_Pirat_v6
+  - Icon_Monster_Pirat_v8
+  - Icon_Monster_Pirat_v5
+  - Icon_Monster_Pirat_v9
+  - Icon_Monster_Pirat_v7
+  - Icon_Monster_Pirat_v3
+  - Icon_Monster_Pirat_v1
+  m_RenderDataMap: {}
+  m_Tag: Icon_Monster_Pirat
+  m_IsVariant: 0
