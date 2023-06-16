@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using Scripts.Entities.Type;
 using Scripts.Factory.Pool;
+using System;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Scripts.Entities.Units
 {
@@ -70,36 +72,32 @@ namespace Scripts.Entities.Units
         {
             var sizeGroup = currentCountUnits switch
             {
-                int n when n >= 100 => 6,
                 int n when n >= 50 => 5,
                 int n when n >= 25 => 4,
                 int n when n >= 15 => 3,
-                int n when n >= 5 => 2,
+                int n when n >= 10 => 2,
                 _ => 1,
             };
             return sizeGroup;
         }
-        private Vector3 GetPositionInGroup(Vector3 traget, int indexGroup)
+
+        private Dictionary<int, float> groupOffsets = new Dictionary<int, float>()
         {
-            bool isUnitGroupInRange = (_unitGroup >= 2 && _unitGroup <= 6);
-            bool isIndexGroupInRange = (indexGroup >= 1 && indexGroup <= _unitGroup - 1);
-
-            if (isUnitGroupInRange && isIndexGroupInRange)
+            { 2, 1f },
+            { 3, -1f },
+            { 4, 2f },
+            { 5, -2f }
+        };
+        private Vector3 GetPositionInGroup(Vector3 target, int indexGroup)
+        {
+            if (groupOffsets.TryGetValue(indexGroup, out float yOffset))
             {
-                int offsetSide = indexGroup % 2 == 0 ? -1 : 1;
-                int offsetCount = indexGroup <= 2 ? 1 : (indexGroup - 1) / 2;
-                float offsetMultiplier = 0f;
-                if(indexGroup >= 4)
-                {
-                    offsetMultiplier = 1f;
-                }
-
-                float totalOffset = ((_spawnOffset * offsetCount) + offsetMultiplier) * offsetSide;
-                return traget + new Vector3(0f,totalOffset, 0f);
+                return target + new Vector3(0f, _spawnOffset * yOffset, 0f);
             }
 
-            return traget;
+            return target;
         }
+
         private void RotateToTarget(Vector3 target, Transform body)
         {
             Vector3 direction = target - body.position;
