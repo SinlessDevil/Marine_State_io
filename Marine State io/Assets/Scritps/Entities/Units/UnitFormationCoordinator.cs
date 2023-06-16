@@ -26,7 +26,7 @@ namespace Scripts.Entities.Units
                 var PlayerCloneUnit = player.CountUnit;
                 int risingUnit = 0;
 
-                StopCoroutine(player.coroutine);
+                player.StopAccumulationUnit();
                 player.CountUnit = 0;
 
                 List<Unit> units = new();
@@ -52,13 +52,17 @@ namespace Scripts.Entities.Units
                     }
 
                     RotateToTarget(entity.Island.transform.position, player.Island.spawnPointUnitGroup);
-                    foreach (var unit in units) unit.transform.SetParent(null);
+                    foreach (var unit in units)
+                    {
+                        unit.transform.SetParent(null);
+                    }
                     player.Island.spawnPointUnitGroup.rotation = Quaternion.identity;
+                    units.Clear();
 
                     yield return new WaitForSecondsRealtime(_speardTime);
                 }
-                
-                StartCoroutine(player.coroutine);
+
+                player.StartAccumulationUnit();
             }
         }
 

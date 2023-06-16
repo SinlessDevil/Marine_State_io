@@ -8,5 +8,15 @@ namespace Scripts.Entities.Type
         {
             visitor.Visit(this);
         }
+
+        private void Start()
+        {
+            StartAccumulationUnit();
+        }
+
+        private void OnDestroy()
+        {
+            StopAccumulationUnit();
+        }
     }
 }

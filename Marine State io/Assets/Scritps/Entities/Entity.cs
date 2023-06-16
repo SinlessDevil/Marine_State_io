@@ -51,6 +51,18 @@ namespace Scripts.Entities
             _textCountUnit.LogErrorIfComponentNull();
         }
 
+        public void StartAccumulationUnit()
+        {
+            if(coroutine != null)
+                StartCoroutine(coroutine);
+        }
+
+        public void StopAccumulationUnit()
+        {
+            if(coroutine != null)
+                StopCoroutine(coroutine);
+        }
+
         public IEnumerator AccumulationUnitRoutine()
         {
             while (true)

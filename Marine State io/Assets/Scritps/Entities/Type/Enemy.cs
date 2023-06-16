@@ -9,14 +9,14 @@ namespace Scripts.Entities.Type
             visitor.Visit(this);
         }
 
-        private void OnEnable()
+        private void Start()
         {
-            StartCoroutine(coroutine);
+            StartAccumulationUnit();
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
-            StopCoroutine(coroutine);
+            StopAccumulationUnit();
         }
     }
 }
