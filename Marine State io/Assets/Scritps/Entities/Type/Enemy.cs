@@ -1,12 +1,24 @@
 using Scripts.Entities.Units;
+using Scripts.Entities.Logic;
+using Extensions;
+using Scripts.Entities.Logic.Enemies;
 
 namespace Scripts.Entities.Type
 {
     public class Enemy : Entity
     {
-        public override void Accept(IUnitVisitor visitor)
+        private EntityBehavior _entityBehavior;
+        private UnitFormationCoordinator _unitFormationCoordinator;
+
+        public void InitBehavior(UnitFormationCoordinator unitFormationCoordinator)
         {
-            visitor.Visit(this);
+            this.gameObject.AddComponent<EnemyBehavior>();
+            _entityBehavior = GetComponent<EnemyBehavior>();
+
+            _unitFormationCoordinator = unitFormationCoordinator;
+
+            _entityBehavior.Initialize(_unitFormationCoordinator);
+            _entityBehavior.LogErrorIfComponentNull();
         }
 
         private void Start()
@@ -17,6 +29,11 @@ namespace Scripts.Entities.Type
         private void OnDestroy()
         {
             StopAccumulationUnit();
+        }
+
+        public override void Accept(IUnitVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

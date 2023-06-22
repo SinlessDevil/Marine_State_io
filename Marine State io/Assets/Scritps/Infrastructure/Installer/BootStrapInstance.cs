@@ -2,9 +2,9 @@ using Scripts.Infrastructure.Services.Factories.GameFactory;
 using Scripts.Infrastructure.StateMachine.Game;
 using Scripts.Infrastructure.StateMachine.States;
 using Scripts.Infrastructure.StateMachine;
-using Scirpts.Infrastructure.Services.StaticData.Game;
-using Scirpts.Infrastructure.Services.StaticData.Level;
 using Scripts.Infrastructure.Services.Factories.UIFactory;
+using Scripts.Infrastructure.Services.StaticData.Game;
+using Scripts.Infrastructure.Services.StaticData.Level;
 using UnityEngine;
 using Zenject;
 

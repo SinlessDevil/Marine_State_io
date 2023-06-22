@@ -1,56 +1,54 @@
-using UnityEngine;
 using Scripts.Entities.Obstacles.Type.Whirlpool;
 using Scripts.Entities.Obstacles.Type;
 using Scripts.Entities.Type;
 using Scripts.Utility;
 using Extensions;
+using Scripts.Entities.Logic;
+using UnityEngine;
 
-namespace Scripts.Entities.Units
+namespace Scripts.Entities.Units.Actions
 {
-    public class UnitActions : MonoBehaviour, IUnitVisitor
+    public sealed class UnitEnemyActions : UnitActions, IUnitVisitor
     {
-        private Sprite _iconPlayer;
-        private Color _colorPlayer;
+        private Sprite _icon;
+        private Color _color;
 
-        public void Initialize(Sprite iconPlayer, Color colorPlayer)
+        public void Initialize(Sprite icon, Color color)
         {
-            _iconPlayer = iconPlayer;
-            _colorPlayer = colorPlayer;
+            _icon = icon;
+            _color = color;
         }
 
         public void Visit(Enemy entity)
         {
             entity.gameObject.ShakeGameObject(0.1f, 1f);
-            SubtractUnitFromEnemy(entity);
+            AddUnitsToAllies(entity);
         }
         public void Visit(Player entity)
         {
             entity.gameObject.ShakeGameObject(0.1f, 1f);
-            AddUnitsToAllies(entity);
+            SubtractUnitFromEnemy(entity);
         }
         public void Visit(Ally entity)
         {
             entity.gameObject.ShakeGameObject(0.1f, 1f);
-            AddUnitsToAllies(entity);
+            SubtractUnitFromEnemy(entity);
         }
         public void Visit(Empty entity)
         {
             entity.gameObject.ShakeGameObject(0.1f, 1f);
             SubtractUnitFromEnemy(entity);
         }
-
         public void Visit(Barrel entity)
         {
-            Shake.ShakeCamera(1f,1f);
+            Shake.ShakeCamera(1f, 1f);
             entity.Explosion();
         }
-
         public void Visit(WhirlpoolCenter entity)
         {
             Unit currentUnit = GetComponent<Unit>();
             currentUnit.ResetUnit();
         }
-
         public void Visit(WhirlpoolDetection entity)
         {
             Unit currentUnit = GetComponent<Unit>();
@@ -60,23 +58,30 @@ namespace Scripts.Entities.Units
         private void SubtractUnitFromEnemy(Entity entity)
         {
             entity.CountUnit -= 1;
-            if(entity.CountUnit < 0)
+            if (entity.CountUnit < 0)
             {
                 CaptureTerritory(entity);
             }
         }
         private void CaptureTerritory(Entity entity)
         {
-            var existingPlayerComponent = entity.gameObject.GetComponent<Player>();
-            if (existingPlayerComponent == null)
+            if (!entity.gameObject.TryGetComponent<Enemy>(out var existingPlayerComponent))
             {
-                var newPlayerComponent = entity.ReplaceComponent<Player>();
+                if (entity.gameObject.TryGetComponent<EntityBehavior>(out var entityBehavior))
+                {
+                    Destroy(entityBehavior);
+                }
+
+                var newPlayerComponent = entity.ReplaceComponent<Enemy>();
 
                 newPlayerComponent.Initialize(0);
 
-                newPlayerComponent.Island.Initialize(null, _iconPlayer, _colorPlayer);
+                newPlayerComponent.Island.Initialize(null, _icon, _color);
                 newPlayerComponent.Island.ActivatedAnimation();
                 newPlayerComponent.Island.ActivatedFirework();
+
+                var unitFormationCoordinator = FindObjectOfType<UnitFormationCoordinator>();
+                newPlayerComponent.InitBehavior(unitFormationCoordinator);
             }
             else
             {

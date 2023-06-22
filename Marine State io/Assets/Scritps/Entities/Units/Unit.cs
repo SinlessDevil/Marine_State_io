@@ -5,14 +5,13 @@ using UnityEngine;
 
 namespace Scripts.Entities.Units
 {
-    [RequireComponent(typeof(UnitActions))]
     public class Unit : MonoBehaviour
     {
         private SpriteRenderer _bodySprite;
         private Transform _target;
         private TrailRenderer _trailRenderer;
 
-        private UnitActions _unitAction;
+        private IUnitVisitor _unitAction;
 
         private void Awake()
         {
@@ -28,7 +27,7 @@ namespace Scripts.Entities.Units
         }
         public void InitComponent()
         {
-            _unitAction = GetComponent<UnitActions>();
+            _unitAction = GetComponent<IUnitVisitor>();
             _bodySprite = GetComponentInChildren<SpriteRenderer>();
             _trailRenderer = GetComponentInChildren<TrailRenderer>();
 

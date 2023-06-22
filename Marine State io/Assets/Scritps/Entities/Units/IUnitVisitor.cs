@@ -1,11 +1,14 @@
 using Scripts.Entities.Obstacles.Type;
 using Scripts.Entities.Obstacles.Type.Whirlpool;
 using Scripts.Entities.Type;
+using UnityEngine;
 
 namespace Scripts.Entities.Units
 {
     public interface IUnitVisitor
     {
+        void Initialize(Sprite icon, Color color);
+
         void Visit(Enemy entity);
         void Visit(Player entity);
         void Visit(Empty entity);

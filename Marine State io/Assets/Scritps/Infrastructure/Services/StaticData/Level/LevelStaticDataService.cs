@@ -1,7 +1,7 @@
 using Scripts.StaticData;
 using UnityEngine;
 
-namespace Scirpts.Infrastructure.Services.StaticData.Level
+namespace Scripts.Infrastructure.Services.StaticData.Level
 {
     public class LevelStaticDataService : ILevelStaticDataService
     {

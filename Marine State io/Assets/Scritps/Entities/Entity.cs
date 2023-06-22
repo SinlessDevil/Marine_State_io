@@ -29,8 +29,7 @@ namespace Scripts.Entities
         {
             coroutine = AccumulationUnitRoutine();
         }
-
-        public void Initialize(int countUnit)
+        public virtual void Initialize(int countUnit)
         {
             InitComponents();
             CountUnit = countUnit;
@@ -56,14 +55,12 @@ namespace Scripts.Entities
             if(coroutine != null)
                 StartCoroutine(coroutine);
         }
-
         public void StopAccumulationUnit()
         {
             if(coroutine != null)
                 StopCoroutine(coroutine);
         }
-
-        public IEnumerator AccumulationUnitRoutine()
+        private IEnumerator AccumulationUnitRoutine()
         {
             while (true)
             {

@@ -1,6 +1,6 @@
 using Scripts.StaticData;
 
-namespace Scirpts.Infrastructure.Services.StaticData.Level
+namespace Scripts.Infrastructure.Services.StaticData.Level
 {
     public interface ILevelStaticDataService
     {

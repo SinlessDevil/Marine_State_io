@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-using Scripts.Entities.Type;
 using Scripts.Factory.Pool;
-using System;
-using static UnityEngine.GraphicsBuffer;
 
 namespace Scripts.Entities.Units
 {
@@ -14,6 +11,8 @@ namespace Scripts.Entities.Units
         [SerializeField] private float _speardTime = 0.5f;
         [SerializeField] private float _spawnOffset = 0.75f;
 
+        public bool IsGenerateUnits { get; private set; }
+
         private SpawnerUnitPool _spawnerUnitPool;
 
         private void Start()
@@ -21,15 +20,23 @@ namespace Scripts.Entities.Units
             _spawnerUnitPool = GetComponent<SpawnerUnitPool>();
         }
 
-        public IEnumerator GenerateUnitsRoutine(Player player, Entity entity)
+        public SpawnerUnitPool GetSpawnerUnit()
         {
-            if (player.CountUnit != 0)
+            return _spawnerUnitPool;
+        }
+
+        public IEnumerator GenerateUnitsRoutine(Entity mainEntity, Entity targetEntity, PoolMono<Unit> pool)
+        {
+            if (mainEntity.CountUnit != 0)
             {
-                var PlayerCloneUnit = player.CountUnit;
+                IsGenerateUnits = true;
+
+                var PlayerCloneUnit = mainEntity.CountUnit;
                 int risingUnit = 0;
 
-                player.StopAccumulationUnit();
-                player.CountUnit = 0;
+                mainEntity.StopAccumulationUnit();
+                mainEntity.CountUnit = 0;
+                Debug.Log(mainEntity.ToString() + "  " + mainEntity.CountUnit);
 
                 List<Unit> units = new();
 
@@ -47,25 +54,29 @@ namespace Scripts.Entities.Units
 
                     for (int i = 0; i < risingUnit; i++)
                     {
-                        var unit = _spawnerUnitPool.InitUnit(GetPositionInGroup(player.transform.position, i + 1),
-                            player.Island.iconPlayer.sprite, player.Island.islandBody.color, entity.Island);
-                        unit.transform.SetParent(player.Island.spawnPointUnitGroup);
+                        var unit = _spawnerUnitPool.InitUnit(GetPositionInGroup(mainEntity.transform.position, i + 1),
+                            mainEntity.Island.iconPlayer.sprite, mainEntity.Island.islandBody.color, targetEntity.Island, pool);
+                        unit.transform.SetParent(mainEntity.Island.spawnPointUnitGroup);
                         units.Add(unit);
                     }
 
-                    RotateToTarget(entity.Island.transform.position, player.Island.spawnPointUnitGroup);
+                    RotateToTarget(targetEntity.Island.transform.position, mainEntity.Island.spawnPointUnitGroup);
                     foreach (var unit in units)
                     {
                         unit.transform.SetParent(null);
                     }
-                    player.Island.spawnPointUnitGroup.rotation = Quaternion.identity;
+                    mainEntity.Island.spawnPointUnitGroup.rotation = Quaternion.identity;
                     units.Clear();
 
                     yield return new WaitForSecondsRealtime(_speardTime);
                 }
 
-                player.StartAccumulationUnit();
+                mainEntity.StartAccumulationUnit();
+
+                IsGenerateUnits = false;
             }
+
+            Debug.Log("Stop");
         }
 
         private int SetSizeGroup(int currentCountUnits)
@@ -81,7 +92,7 @@ namespace Scripts.Entities.Units
             return sizeGroup;
         }
 
-        private Dictionary<int, float> groupOffsets = new Dictionary<int, float>()
+        private Dictionary<int, float> groupOffsets = new()
         {
             { 2, 1f },
             { 3, -1f },

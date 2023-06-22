@@ -1,17 +1,17 @@
 using UnityEngine;
-using Scripts.Level;
-using Scripts.UI;
 using Scripts.Infrastructure.Services.Factories.GameFactory;
 using Scripts.Infrastructure.Services.Factories.UIFactory;
-using Scirpts.Infrastructure.Services.StaticData.Level;
+using Scripts.Infrastructure.Services.StaticData.Level;
 using Scripts.Infrastructure.StateMachine.Game;
+using Scripts.Entities.Units;
+using Scripts.Entities.Obstacles.Type.Whirlpool;
+using Scripts.Entities.Obstacles.Type;
 using Scripts.StaticData;
 using Scripts.Islands;
 using Scripts.Factory.Pool;
 using Scripts.TouchControl;
-using Scripts.Entities.Units;
-using Scripts.Entities.Obstacles.Type.Whirlpool;
-using Scripts.Entities.Obstacles.Type;
+using Scripts.Level;
+using Scripts.UI;
 
 namespace Scripts.Infrastructure.StateMachine.States
 {
@@ -24,7 +24,8 @@ namespace Scripts.Infrastructure.StateMachine.States
         private readonly LevelStaticData _levelStaticData;
 
         private const string IslandPath = "Entities/Island";
-        private const string UnitPath = "Entities/Unit";
+        private const string UnitPlayerPath = "Entities/Units/UnitPlayer";
+        private const string UnitEnemyPath = "Entities/Units/UnitEnemy";
         private const string BarrelPath = "Entities/Barrel";
         private const string WhirlpoolPath = "Entities/Whirlpool";
 
@@ -61,22 +62,30 @@ namespace Scripts.Infrastructure.StateMachine.States
         {
             _uiFactory.CreateUiRoot();
 
-            InitSpawnerUnit(InitUnitPrefab());
+            var unitPlayerPrefab = InitUnitPlayerPrefab();
+            var unitEnemyPrefab = InitUnitEnemyPrefab();
+            InitSpawnerUnit(unitPlayerPrefab, unitEnemyPrefab);
 
             var unitFormationCoordinator = InitUnitFormationUnit();
             InitTouchScreen(unitFormationCoordinator);
+
             var levelSetup = InitLevelSetup(unitFormationCoordinator);
             InitGameHud(levelSetup);
         }
 
-        private void InitSpawnerUnit(Unit unit)
+        private void InitSpawnerUnit(Unit unitPlayer, Unit unitEnemy)
         {
             SpawnerUnitPool spawnerUnitPool = Object.FindObjectOfType<SpawnerUnitPool>();
-            spawnerUnitPool.Initialize(unit);
+            spawnerUnitPool.Initialize(unitPlayer, unitEnemy);
         }
-        private Unit InitUnitPrefab()
+        private Unit InitUnitPlayerPrefab()
         {
-            var unit = Resources.Load<Unit>(UnitPath);
+            var unit = Resources.Load<Unit>(UnitPlayerPath);
+            return unit;
+        }
+        private Unit InitUnitEnemyPrefab()
+        {
+            var unit = Resources.Load<Unit>(UnitEnemyPath);
             return unit;
         }
 

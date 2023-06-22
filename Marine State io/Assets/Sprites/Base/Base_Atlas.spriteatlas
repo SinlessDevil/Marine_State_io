@@ -56,6 +56,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: b8386dfc7ac9fa4439132c868d2a8a9a, type: 3}
     - {fileID: 2800000, guid: e1cba2a178c5a314095cade150bd07f0, type: 3}
     - {fileID: 2800000, guid: 67d686c82d694e84e98c5bdab1d46ef9, type: 3}
+    - {fileID: 2800000, guid: 14186df0ac55d464e93590cce0ca001a, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -64,6 +65,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: caae2e60a1d85aa4ab17c0e179940e7e, type: 3}
   - {fileID: 21300000, guid: 81bff47055d436f42bd7bb908e2dbdab, type: 3}
   - {fileID: 21300000, guid: 7227d3d02f3387d47852e90f5f9c37bd, type: 3}
+  - {fileID: 21300000, guid: 14186df0ac55d464e93590cce0ca001a, type: 3}
   - {fileID: 21300000, guid: 4ba4de8121b4f654d9f1a9e110c4ed46, type: 3}
   - {fileID: 21300000, guid: e1cba2a178c5a314095cade150bd07f0, type: 3}
   - {fileID: 21300000, guid: 749f5962c37a88747b25d8842b8a7455, type: 3}
@@ -89,6 +91,7 @@ SpriteAtlas:
   - Island_8
   - Island
   - Line-001
+  - Ship_v3
   - Unit
   - Barrel
   - Low_Dark_Circle

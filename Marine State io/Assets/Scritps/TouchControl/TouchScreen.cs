@@ -1,9 +1,9 @@
 using UnityEngine;
 using Scripts.Entities.Type;
 using Scripts.Entities;
+using Scripts.Entities.Units;
 using Extensions;
 using UniRx;
-using Scripts.Entities.Units;
 
 namespace Scripts.TouchControl
 {
@@ -87,7 +87,8 @@ namespace Scripts.TouchControl
                 {
                     if(_currentPlayer != entity)
                     {
-                        StartCoroutine(_unitFormationCoordinator.GenerateUnitsRoutine(_currentPlayer, entity));
+                        StartCoroutine(_unitFormationCoordinator.GenerateUnitsRoutine(_currentPlayer, entity,
+                            _unitFormationCoordinator.GetSpawnerUnit().GetPoolPlayer()));
                     }
                 }
             }

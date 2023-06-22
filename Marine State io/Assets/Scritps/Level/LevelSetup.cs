@@ -6,11 +6,10 @@ using UnityEngine;
 using Scripts.Islands;
 using Scripts.Entities.Type;
 using Scripts.StaticData;
-using Extensions;
-using Scripts.Factory.Pool;
 using Scripts.Entities.Obstacles.Type;
 using Scripts.Entities.Obstacles.Type.Whirlpool;
 using Scripts.Entities.Units;
+using Extensions;
 
 namespace Scripts.Level
 {
@@ -170,7 +169,7 @@ namespace Scripts.Level
         private void InitializedIsland()
         {
             _islands = FindObjectsOfType<Island>();
-            List<Island> islandsClone = new List<Island>(_islands);
+            List<Island> islandsClone = new(_islands);
 
             InitPlayer(islandsClone);
             InitEnemy(islandsClone);
@@ -195,6 +194,7 @@ namespace Scripts.Level
             for (int i = 0; i < _countEnemy; i++)
             {
                 Enemy enemy = islandsClone[i].gameObject.AddComponent<Enemy>();
+                enemy.InitBehavior(_unitFormationCoordinator);
                 enemy.Initialize(0);
 
                 Island island = enemy.GetComponent<Island>();

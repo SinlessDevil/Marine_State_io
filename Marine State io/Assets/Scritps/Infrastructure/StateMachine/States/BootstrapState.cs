@@ -1,7 +1,7 @@
 using UnityEngine.SceneManagement;
 using Scripts.Infrastructure.StateMachine.Game;
 using Scripts.StaticData;
-using Scirpts.Infrastructure.Services.StaticData.Game;
+using Scripts.Infrastructure.Services.StaticData.Game;
 
 namespace Scripts.Infrastructure.StateMachine.States
 {

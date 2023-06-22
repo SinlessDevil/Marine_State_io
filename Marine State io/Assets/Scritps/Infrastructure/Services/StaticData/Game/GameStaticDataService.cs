@@ -1,7 +1,7 @@
 using Scripts.StaticData;
 using UnityEngine;
 
-namespace Scirpts.Infrastructure.Services.StaticData.Game
+namespace Scripts.Infrastructure.Services.StaticData.Game
 {
     public class GameStaticDataService : IGameStaticDataService
     {
