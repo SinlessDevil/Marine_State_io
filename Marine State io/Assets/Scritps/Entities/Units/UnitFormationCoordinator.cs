@@ -36,7 +36,6 @@ namespace Scripts.Entities.Units
 
                 mainEntity.StopAccumulationUnit();
                 mainEntity.CountUnit = 0;
-                Debug.Log(mainEntity.ToString() + "  " + mainEntity.CountUnit);
 
                 List<Unit> units = new();
 
@@ -75,8 +74,6 @@ namespace Scripts.Entities.Units
 
                 IsGenerateUnits = false;
             }
-
-            Debug.Log("Stop");
         }
 
         private int SetSizeGroup(int currentCountUnits)
